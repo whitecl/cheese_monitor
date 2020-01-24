@@ -1,9 +1,0 @@
-{application,cheese_monitor,
-             [{applications,[kernel,stdlib,elixir,logger,runtime_tools,
-                             toolshed,ring_logger,shoehorn]},
-              {description,"cheese_monitor"},
-              {modules,['Elixir.CheeseMonitor',
-                        'Elixir.CheeseMonitor.Application']},
-              {registered,[]},
-              {vsn,"0.1.0"},
-              {mod,{'Elixir.CheeseMonitor.Application',[]}}]}.
