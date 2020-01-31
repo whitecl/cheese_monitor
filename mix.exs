@@ -39,6 +39,8 @@ defmodule CheeseMonitor.MixProject do
       {:shoehorn, "~> 0.4"},
       {:ring_logger, "~> 0.6"},
       {:toolshed, "~> 0.2"},
+      {:httpoison, "~> 1.6"},
+      {:poison, "~> 4.0"},
 
       # Dependencies for all targets except :host
       {:nerves_runtime, "~> 0.6", targets: @all_targets},

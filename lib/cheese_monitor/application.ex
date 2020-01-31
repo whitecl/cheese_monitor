@@ -5,12 +5,14 @@ defmodule CheeseMonitor.Application do
 
   @target Mix.target()
 
+  require Logger
   use Application
 
   def start(_type, _args) do
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: CheeseMonitor.Supervisor]
+    Logger.debug("starting Supervisor")
     Supervisor.start_link(children(@target), opts)
   end
 
@@ -19,6 +21,7 @@ defmodule CheeseMonitor.Application do
     [
       # Starts a worker by calling: CheeseMonitor.Worker.start_link(arg)
       # {CheeseMonitor.Worker, arg},
+      CheeseMonitor.Monitor
     ]
   end
 
