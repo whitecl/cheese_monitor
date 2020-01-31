@@ -1,32 +1,14 @@
-defmodule Reporter do
-  require HTTPoison
+defmodule CheeseMonitor.Reporter do
+  alias CheeseMonitor.Reporter.Client
 
   def send_start_event do
-    HTTPoison.start()
+    Client.send_event('Monitor Start', 1.0)
 
-    time =
-      DateTime.utc_now()
-      |> DateTime.to_unix()
+    {:ok}
+  end
 
-    query =
-      %{
-        "operationName" => "",
-        "query" => """
-          mutation {
-            addReading(categoryName: "Monitor Start", value: 1.0, reading_at: #{time}) {
-              id
-            }
-          }
-        """,
-        "variables" => ""
-      }
-      |> Poison.encode!()
-
-    HTTPoison.post!(
-      "http://localhost:4000/api/graphql",
-      query,
-      [{"Content-Type", "application/json"}]
-    )
+  def send_rand_event do
+    Client.send_event('Random Number', :rand.uniform())
 
     {:ok}
   end
